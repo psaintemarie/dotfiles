@@ -6,6 +6,7 @@ echo "Installing homebrew"
 echo "Updating and installing some packages"
 brew update
 brew install mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glances
+brew cask install iterm2
 
 echo "Installing Oh my ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -15,6 +16,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
 
 echo "Setup configuration files"
+
+rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc
 
 config_files=~/git/psaintemarie/dotfiles/config/*
 
