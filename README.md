@@ -1,8 +1,4 @@
-<h4 align="center">This is a compilation of config files for zsh, vim, git and more.</h4>
-
-# dotfiles
-
-Collection of my personal dotfiles
+<h4 align="center">This is a compilation of config files for zsh, vim, git, tmux and more.</h4>
 
 ## Install
 
