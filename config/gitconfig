@@ -1,0 +1,9 @@
+[user]
+	name = Philippe Sainte-Marie
+	email = psm@meleia.net
+
+[color]
+	ui = true
+[core]
+	editor = /usr/bin/vim
+	excludesfile = ~/.gitignore

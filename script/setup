@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "Installing Oh my ZSH"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+chsh -s /bin/zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+#echo "Installing Vundle..."
+#mkdir -p ~/.vim/bundle
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+echo "Setup configuration files"
+
+config_files=~/git/psaintemarie/dotfiles/config/*
+
+for file in $config_files; do
+  config=$(basename $file)
+  echo "Creating symlink for .$config"
+  ln -s $file ~/.$config
+done
+
+echo "Setting iterm2 preferences folder..."
+defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "~/git/psaintemarie/dotfiles/iterm"
+defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+
+echo "Setup done."
