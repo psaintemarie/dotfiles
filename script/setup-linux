@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "Updating apt"
+sudo apt update
+
+echo "Installing some apps"
+sudo apt install mosh tmux known_hosts mtr pwgen youtube-dl subnetcalc htop glances -y
+
+echo "Installing Oh my ZSH"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo "Installing zsh plugins"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+echo "Setup configuration files"
+
+config_files=~/git/psaintemarie/dotfiles/config/*
+
+for file in $config_files; do
+  config=$(basename $file)
+  echo "Creating symlink for .$config"
+  ln -s $file ~/.$config
+done
+
+echo "Setup done."
