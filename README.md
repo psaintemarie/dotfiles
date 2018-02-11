@@ -2,7 +2,7 @@
 
 Collection of my personal dotfiles
 
-# Install
+## Install
 
 If you want to use these, clone the repository:
 
