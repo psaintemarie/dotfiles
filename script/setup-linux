@@ -29,3 +29,5 @@ for file in $config_files; do
 done
 
 echo "Setup done."
+
+/bin/zsh
