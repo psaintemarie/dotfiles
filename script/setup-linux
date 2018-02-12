@@ -4,7 +4,9 @@ echo "Updating apt"
 sudo apt update
 
 echo "Installing some apps"
-sudo apt install mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
+sudo apt install zsh mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
+
+chsh -s /bin/zsh
 
 echo "Installing Oh my ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
