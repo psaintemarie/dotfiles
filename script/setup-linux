@@ -6,10 +6,11 @@ sudo apt update
 echo "Installing some apps"
 sudo apt install zsh mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
 
-chsh -s /bin/zsh
-
 echo "Installing Oh my ZSH"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+echo "Default shell to zsh"
+chsh -s /bin/zsh
 
 echo "Installing zsh plugins"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
