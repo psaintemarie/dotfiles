@@ -24,10 +24,5 @@ For macOS, the iTerm2 theme is inside the `themes` folder.
 You need to import it from `(Preferences -> Profiles -> Colors -> Color Presets... -> Import...)` and then choose it, for example: `(Preferences -> Profiles -> Colors -> Color Presets... -> Snazzy)`
 
 <h1 align="center">
-  <br>
   <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshot.png" alt="dotfiles" width="850">
-  <br>
-  dotfiles
-  <br>
-  <br>
 </h1>
