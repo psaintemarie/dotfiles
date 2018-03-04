@@ -5,8 +5,8 @@
 If you want to use these, clone the repository:
 
 ```bash
-mkdir -p ~/git
-cd ~/git
+mkdir -p ~/git/psaintemarie
+cd ~/git/psaintemarie
 git clone git@github.com:psaintemarie/dotfiles.git
 ```
 
