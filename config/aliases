@@ -4,3 +4,5 @@ alias ln="ln -v"
 alias mkdir="mkdir -p"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
+# tmux
+alias takeover="tmux detach -a"
