@@ -12,13 +12,18 @@ git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 echo "Default shell to zsh"
 sudo chsh -s /bin/zsh
 
-echo "Installing zsh plugins"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+echo "Installing zsh plugins & theme"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
+
+ln -s ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting.plugin.zsh
+ln -s ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions.plugin.zsh
+ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
 echo "Setup configuration files"
 
-rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc
+rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc ~/.spaceship_options
 
 config_files=~/git/psaintemarie/dotfiles/config/*
 
