@@ -9,7 +9,7 @@ brew install mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glan
 brew cask install iterm2
 
 echo "Installing Oh my ZSH"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 echo "Installing zsh plugins & theme"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -37,3 +37,5 @@ defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "~/git/psaintem
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
 echo "Setup done."
+
+/bin/zsh
