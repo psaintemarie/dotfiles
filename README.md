@@ -10,7 +10,7 @@ cd ~/git/psaintemarie
 git clone git@github.com:psaintemarie/dotfiles.git
 ```
 
-You'll need to use the right setup file wether you are on macOS or linux
+You'll need to use the right setup file, for macOS or Linux
 
 ```bash
 cd ~/git/dotfiles
