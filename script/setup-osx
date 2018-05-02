@@ -3,10 +3,12 @@
 echo "Installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Updating and installing some packages"
+echo "Updating and installing some packages including fonts to use with iTerm2"
 brew update
 brew install mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glances
 brew cask install iterm2
+brew tap caskroom/fonts
+brew cask install font-source-code-pro
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -36,6 +38,6 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "~/git/psaintemarie/dotfiles/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setup done."
+echo "Setup done, changing default shell to /bin/zsh"
 
-/bin/zsh
+chsh -s /bin/zsh
