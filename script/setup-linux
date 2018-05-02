@@ -9,9 +9,6 @@ sudo apt install zsh mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-echo "Default shell to zsh"
-sudo chsh -s /bin/zsh
-
 echo "Installing zsh plugins & theme"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
@@ -35,4 +32,4 @@ done
 
 echo "Setup done."
 
-/bin/zsh
+chsh -s /bin/zsh
