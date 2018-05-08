@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Installing some apps"
+brew update
+brew tap caskroom/cask
+brew cask install 1password telegram google-chrome etcher cakebrew atom rocket slack spotify stay textmate
