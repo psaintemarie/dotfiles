@@ -5,7 +5,6 @@
 If you want to use these, clone the repository:
 
 ```bash
-mkdir ~/your_main_git_folder
 cd ~/your_main_git_folder
 git clone git@github.com:psaintemarie/dotfiles.git
 ```
