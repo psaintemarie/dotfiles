@@ -5,15 +5,15 @@
 If you want to use these, clone the repository:
 
 ```bash
-mkdir -p ~/git/psaintemarie
-cd ~/git/psaintemarie
+mkdir ~/your_main_git_folder
+cd ~/your_main_git_folder
 git clone git@github.com:psaintemarie/dotfiles.git
 ```
 
 You'll need to use the right setup file, for macOS or Linux
 
 ```bash
-cd ~/git/dotfiles
+cd ~/your_main_git_folder/dotfiles
 script/setup-macos
 or
 script/setup-linux
