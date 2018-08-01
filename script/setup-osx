@@ -38,6 +38,4 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "~/git/psaintemarie/dotfiles/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setup done, changing default shell to /bin/zsh"
-
-chsh -s /bin/zsh
+echo "Setup done"

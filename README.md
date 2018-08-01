@@ -18,6 +18,8 @@ or
 script/setup-linux
 ```
 
+After running the script, change your default shell by running `chsh -s /bin/zsh`.
+
 For macOS, the iTerm2 theme is inside the `themes` folder.
 
 You need to import it from `(Preferences -> Profiles -> Colors -> Color Presets... -> Import...)` and then choose it, for example: `(Preferences -> Profiles -> Colors -> Color Presets... -> Snazzy)`
