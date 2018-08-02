@@ -6,3 +6,5 @@ alias mkdir="mkdir -p"
 alias path='echo $PATH | tr -s ":" "\n"'
 # tmux
 alias takeover="tmux detach -a"
+# git
+alias gs="git status"
