@@ -1,10 +1,14 @@
 #!/bin/bash
 
-echo "Updating apt"
-sudo apt update
+echo "Installing homebrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Installing some apps"
-sudo apt install zsh mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
+echo "Updating and installing some packages including fonts to use with iTerm2"
+brew update
+brew install mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glances
+brew cask install iterm2
+brew tap caskroom/fonts
+brew cask install font-source-code-pro
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -20,9 +24,9 @@ ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-z
 
 echo "Setup configuration files"
 
-rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc ~/.spaceship_options
+rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc ~/.spaceship_options ~/.tmux.conf
 
-config_files=~/git/psaintemarie/dotfiles/config/*
+config_files=`pwd`/config/*
 
 for file in $config_files; do
   config=$(basename $file)
@@ -30,4 +34,14 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
-echo "Setup done."
+echo "Setup vim theme"
+
+mkdir -p ~/.vim/colors
+vim_theme=`pwd`/themes
+ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
+
+echo "Setting iTerm2 preferences folder..."
+defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
+defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+
+echo "Setup done"

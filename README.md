@@ -2,6 +2,25 @@
 
 ## Install
 
+This will install:
+
+On macOS:
+
+- brew 
+- *mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glances* via brew
+- *iterm2* and *font-source-code-pro* via brew cask
+- Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
+- link all configuration files
+- add dracula theme to vim
+- set custom iterm2 preference folder and set preference
+
+On Linux (ubuntu/debian):
+
+- *git zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances* via apt
+- Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
+- link all configuration files
+- add dracula theme to vim
+
 If you want to use these, clone the repository:
 
 ```bash
@@ -13,17 +32,28 @@ You'll need to use the right setup file, for macOS or Linux
 
 ```bash
 cd ~/your_main_git_folder/dotfiles
-script/setup-macos
+sh setup-macos
 or
-script/setup-linux
+sh setup-linux
 ```
 
 After running the script, change your default shell by running `chsh -s /bin/zsh`.
 
-For macOS, the iTerm2 theme is inside the `themes` folder.
+You can also install the Dracula theme for Terminal.app
 
-You need to import it from `(Preferences -> Profiles -> Colors -> Color Presets... -> Import...)` and then choose it, for example: `(Preferences -> Profiles -> Colors -> Color Presets... -> Snazzy)`
+1. *Terminal > Settings Tab*
+2. Click *"Gear"* icon
+3. Click *Import...*
+4. Select the Dracula.terminal file
+5. Click *Default*
 
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshot.png" alt="dotfiles" width="850">
+  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot1.png" alt="dotfiles1" width="850">
+  <br/>
+  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot2.png" alt="dotfiles2" width="850">
+  <br/>
+  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot3.png" alt="dotfiles3" width="850">
+  <br/>
+  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot4.png" alt="dotfiles4" width="850">
 </h1>
+x

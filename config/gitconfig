@@ -4,11 +4,11 @@
 
 
 [alias]
-	st = status
-	ci = commit
-	co = checkout
+  st = status
+  ci = commit
+  co = checkout
   br = branch
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [color]
 	ui = true
