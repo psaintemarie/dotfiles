@@ -14,7 +14,8 @@ On macOS:
 
 On Linux (ubuntu/debian):
 
-- *git zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances* via apt
+- you will need to install *git* manually first
+- *zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances* via apt
 - Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
 - link all configuration files
 - add dracula theme to vim
