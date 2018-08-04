@@ -1,8 +1,6 @@
 <h4 align="center">This is a compilation of config files for zsh, vim, git, tmux and more.</h4>
 
-## Install
-
-This will install:
+## This will install
 
 On macOS:
 
@@ -39,7 +37,7 @@ sh setup-linux
 
 After running the script, change your default shell by running `chsh -s /bin/zsh`.
 
-You can also install the Dracula theme for Terminal.app
+On macOS, you can install the Dracula theme for Terminal.app
 
 1. *Terminal > Settings Tab*
 2. Click *"Gear"* icon
