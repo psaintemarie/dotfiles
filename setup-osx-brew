@@ -40,6 +40,16 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
+echo "Adding aliases for bins"
+
+bin_aliases=`pwd`/bins/*
+
+for file in $bin_aliases; do
+  bin=$(basename $file)
+  echo "Creating symlink for .$bin"
+  ln -s $file ~/bin/.$bin
+done
+
 #echo "Setup vim theme"
 #mkdir -p ~/.vim/colors
 #vim_theme=`pwd`/themes
