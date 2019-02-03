@@ -2,7 +2,6 @@
 	name = Philippe Sainte-Marie
 	email = psm@meleia.net
 
-
 [alias]
   st = status
   ci = commit
