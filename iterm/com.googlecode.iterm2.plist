@@ -952,12 +952,14 @@
 	<string>2049 113 445 103 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 499 620 392 0 0 1920 1058 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 126 606 469 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>656 552 796 473 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>732 0 780 530 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>932 333 780 530 0 0 1920 1058 </string>
+	<string>932 333 780 530 0 0 1920 1080 </string>
 	<key>NeverWarnAboutShortLivedSessions_36AA69E8-A0F4-4B27-AD19-B9EB0FBB0209</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_36AA69E8-A0F4-4B27-AD19-B9EB0FBB0209_selection</key>
@@ -1613,10 +1615,16 @@
 	<string>25128BBE-8DF4-4654-9C70-C9299EBF0D6A</string>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>546951744.89494395</real>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1652,6 +1660,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>~/git/psaintemarie/dotfiles/iterm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -1661,7 +1671,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-02T08:55:13Z</date>
+	<date>2018-09-22T08:58:33Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabStyle</key>
@@ -1675,7 +1685,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.7</string>
+	<string>3.2.0</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
