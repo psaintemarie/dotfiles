@@ -30,7 +30,7 @@ ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-z
 
 echo "Setup configuration files"
 
-rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore ~/.spaceship_options ~/.tmux.conf
+rm ~/.zshrc ~/.zshenv ~/.aliases  ~/.gitconfig  ~/.gitignore ~/.spaceship_options ~/.tmux.conf
 
 config_files=`pwd`/config/*
 
