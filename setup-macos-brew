@@ -56,8 +56,9 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
-echo "Adding aliases for bins"
+echo "Adding aliases for bins, and creating ~/bin if it does not exist)"
 
+mkdir -p ~/bin/
 bin_aliases=`pwd`/bins/*
 
 for file in $bin_aliases; do
@@ -79,7 +80,7 @@ defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
 echo "Setting brew zsh as default shell, and adding it in /etc/shells (needs user password)"
-sudo tee -a /etc/shells <<< "/opt/loca/bin/zsh"
+sudo tee -a /etc/shells <<< "/opt/local/bin/zsh"
 chsh -s /usr/local/bin/zsh
 
 echo "Setup done"
