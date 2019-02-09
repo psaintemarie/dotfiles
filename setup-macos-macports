@@ -1,22 +1,8 @@
 #!/bin/bash
 
-xcodeapp="/Applications/Xcode.app"
+#check for XCode install
 
-if [ -e "$xcodeapp" ]
-  then
-    echo "XCode is already installed, continuing setup."
-  else
-    while true; do
-      read -p "Xcode is not installed. Although you won't need it with brew, do you want to continue? [y/n] " yn
-      case $yn in
-          [Yy]* ) echo "Continuing setup"; break;;
-          [Nn]* ) exit;;
-          * ) echo "Please answer with yes or no.";;
-      esac
-    done
-fi
-
-echo "Installing Command Line Tools (needed for brew)"
+echo "Installing Command Line Tools"
 `pwd`/misc/install_cmd_line_tools.sh
 
 echo "Setting Command Line Tools as default (needs sudo)"
@@ -27,7 +13,7 @@ echo "Installing latest homebrew"
 
 echo "Updating and installing some packages including fonts to use with iTerm2"
 brew update
-brew install mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr
+brew install mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances
 brew cask install iterm2
 brew tap caskroom/fonts
 brew cask install font-source-code-pro
