@@ -16,8 +16,8 @@ if [ -e "$xcodeapp" ]
     done
 fi
 
-echo "Installing Command Line Tools (needed for brew)"
-`pwd`/misc/install_cmd_line_tools.sh
+#echo "Installing Command Line Tools (needed for brew)"
+#`pwd`/misc/install_cmd_line_tools.sh
 
 echo "Setting Command Line Tools as default (needs sudo)"
 sudo xcode-select --switch "/Library/Developer/CommandLineTools"
