@@ -951,15 +951,17 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>2049 113 445 103 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 499 620 392 0 0 1920 1058 </string>
+	<string>650 498 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>656 552 796 473 0 0 1920 1080 </string>
+	<string>656 552 796 486 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>732 0 780 530 0 0 1920 1058 </string>
+	<string>732 0 780 530 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>932 333 780 530 0 0 1920 1080 </string>
+	<string>732 0 780 530 0 0 1920 1080 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>289 61 780 530 0 0 1920 1080 </string>
 	<key>NeverWarnAboutShortLivedSessions_36AA69E8-A0F4-4B27-AD19-B9EB0FBB0209</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_36AA69E8-A0F4-4B27-AD19-B9EB0FBB0209_selection</key>
@@ -1671,8 +1673,14 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-22T08:58:33Z</date>
+	<date>2019-02-09T09:46:48Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
+	<key>ShowPaneTitles</key>
+	<false/>
+	<key>StretchTabsToFillBar</key>
 	<false/>
 	<key>TabStyle</key>
 	<integer>1</integer>
@@ -1685,7 +1693,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.0</string>
+	<string>3.2.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

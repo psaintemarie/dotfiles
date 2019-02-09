@@ -1,0 +1,84 @@
+#!/bin/bash
+
+xcodeapp="/Applications/Xcode2.app"
+
+if [ -e "$xcodeapp" ]
+  then
+    echo "XCode is already installed, continuing setup."
+  else
+    while true; do
+      read -p "Xcode is not installed. Although you won't need it with brew, do you want to continue? [y/n] " yn
+      case $yn in
+          [Yy]* ) echo "Continuing setup"; break;;
+          [Nn]* ) exit;;
+          * ) echo "Please answer with yes or no.";;
+      esac
+    done
+fi
+
+echo "Installing Command Line Tools (needed for brew)"
+`pwd`/misc/install_cmd_line_tools.sh
+
+echo "Setting Command Line Tools as default (needs sudo)"
+sudo xcode-select --switch "/Library/Developer/CommandLineTools"
+
+echo "Installing latest homebrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+echo "Updating and installing some packages including fonts to use with iTerm2"
+brew update
+brew install mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr
+brew cask install iterm2
+brew tap caskroom/fonts
+brew cask install font-source-code-pro
+
+echo "Installing Oh my ZSH"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+echo "Installing zsh plugins & theme"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
+
+ln -s ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting.plugin.zsh
+ln -s ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions.plugin.zsh
+ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
+
+echo "Setup configuration files"
+
+rm ~/.zshrc ~/.zshenv ~/.aliases  ~/.gitconfig  ~/.gitignore ~/.spaceship_options ~/.tmux.conf
+
+config_files=`pwd`/config/*
+
+for file in $config_files; do
+  config=$(basename $file)
+  echo "Creating symlink for .$config"
+  ln -s $file ~/.$config
+done
+
+echo "Adding aliases for bins"
+
+bin_aliases=`pwd`/bins/*
+
+for file in $bin_aliases; do
+  bin=$(basename $file)
+  echo "Creating symlink for .$bin"
+  ln -s $file ~/bin/.$bin
+done
+
+#echo "Setup vim theme"
+#mkdir -p ~/.vim/colors
+#vim_theme=`pwd`/themes
+#ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
+
+echo "Installing SpaceVim"
+curl -sLf https://spacevim.org/install.sh | bash
+
+echo "Setting iTerm2 preferences folder..."
+defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
+defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+
+echo "Setting brew zsh as default shell (needs user password)"
+chsh -s /usr/local/bin/zsh
+
+echo "Setup done"
