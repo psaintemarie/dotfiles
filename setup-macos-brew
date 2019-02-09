@@ -62,8 +62,8 @@ bin_aliases=`pwd`/bins/*
 
 for file in $bin_aliases; do
   bin=$(basename $file)
-  echo "Creating symlink for .$bin"
-  ln -s $file ~/bin/.$bin
+  echo "Creating symlink for $bin"
+  ln -s $file ~/bin/$bin
 done
 
 #echo "Setup vim theme"
@@ -78,7 +78,8 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setting brew zsh as default shell (needs user password)"
+echo "Setting brew zsh as default shell, and adding it in /etc/shells (needs user password)"
+sudo tee -a /etc/shells <<< "/opt/loca/bin/zsh"
 chsh -s /usr/local/bin/zsh
 
 echo "Setup done"
