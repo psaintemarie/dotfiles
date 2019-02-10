@@ -26,9 +26,13 @@ sudo /usr/sbin/installer -pkg /tmp/macports.pkg -target /
 
 echo "Updating macports definitions (needs sudo)"
 sudo /opt/local/bin/port selfupdate
+sudo /opt/local/bin/port upgrade outdated
 
 echo "Installing some packages (with dependencies)"
 sudo /opt/local/bin/port -N install zsh mosh tmux mas mtr pwgen youtube-dl htop glances
+
+sudo /opt/local/bin/port select --set python python27
+sudo /opt/local/bin/port select --set python2 python27
 
 echo "Installing latest iTerm (needs sudo)"
 
@@ -78,12 +82,13 @@ ln -s `pwd`/zshrc/zshrc-macports ~/.zshrc
 
 echo "Adding aliases for bins"
 
+mkdir -p ~/bin/
 bin_aliases=`pwd`/bins/*
 
-for file in $bin_aliases; do
-  bin=$(basename $file)
-  echo "Creating symlink for .$bin"
-  ln -s $file ~/bin/.$bin
+for bins in $bin_aliases; do
+  bin=$(basename $bins)
+  echo "Creating symlink for $bin"
+  ln -s $bins ~/bin/$bin
 done
 
 #echo "Setup vim theme"
@@ -98,7 +103,8 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setting brew zsh as default shell (needs user password)"
-chsh -s /usr/local/bin/zsh
+echo "Setting brew zsh as default shell (needs sudo)"
+sudo sh -c 'echo /opt/local/bin/zsh >>/etc/shells'
+sudo chpass -s '/opt/local/bin/zsh' $USER
 
 echo "Setup done"
