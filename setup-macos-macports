@@ -1,22 +1,53 @@
 #!/bin/bash
 
 #check for XCode install
+xcodeapp="/Applications/Xcode.app"
 
-echo "Installing Command Line Tools"
-`pwd`/misc/install_cmd_line_tools.sh
+if [ -e "$xcodeapp" ]
+  then
+    echo "XCode is already installed, continuing."
+  else
+    echo "Xcode needs to be installed before installing macports. Exiting setup script."
+    exit 0
+fi
 
-echo "Setting Command Line Tools as default (needs sudo)"
-sudo xcode-select --switch "/Library/Developer/CommandLineTools"
+echo "Agree to Xcode license (needs sudo)"
+sudo xcodebuild -license accept
 
-echo "Installing latest homebrew"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#echo "Installing Command Line Tools"
+#`pwd`/misc/install_cmd_line_tools.sh
 
-echo "Updating and installing some packages including fonts to use with iTerm2"
-brew update
-brew install mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances
-brew cask install iterm2
-brew tap caskroom/fonts
-brew cask install font-source-code-pro
+#echo "Setting Command Line Tools as default (needs sudo)"
+#sudo xcode-select --switch "/Library/Developer/CommandLineTools"
+
+echo "Downloading and installing latest macports release (install needs sudo)"
+/usr/bin/curl -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg 
+sudo /usr/sbin/installer -pkg /tmp/macports.pkg -target /
+
+echo "Updating macports definitions (needs sudo)"
+sudo /opt/local/bin/port selfupdate
+
+echo "Installing some packages (with dependencies)"
+sudo /opt/local/bin/port -N install zsh mosh tmux mas mtr pwgen youtube-dl htop glances
+
+echo "Installing latest iTerm (needs sudo)"
+
+#curl down xml with http links
+/usr/bin/curl -s https://www.iterm2.com/appcasts/final.xml |/usr/bin/tail -8 |/usr/bin/grep http >> /tmp/tmp_url_iterm.txt
+# get the exact url from that xml
+/usr/bin/awk -F'[""]' '{print $2}' /tmp/tmp_url_iterm.txt >> /tmp/dl_url_iterm.txt
+# curl down the zip file
+/usr/bin/xargs -n 1 /usr/bin/curl -o /tmp/iTerm.zip < /tmp/dl_url_iterm.txt
+# unzip the file into /Applications
+sudo /usr/bin/unzip -qo -d /Applications /tmp/iTerm.zip
+#clean up
+/bin/rm -rf /tmp/iTerm.zip
+/bin/rm -rf /tmp/tmp_url_iterm.txt
+/bin/rm -Rf /tmp/dl_url_iterm.txt
+
+echo "Installing Source Code Pro font"
+/usr/bin/curl -o /tmp/source-code-pro.zip https://www.fontsquirrel.com/fonts/download/source-code-pro
+/usr/bin/unzip /tmp/source-code-pro.zip -d ~/Library/Fonts/
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -41,6 +72,9 @@ for file in $config_files; do
   echo "Creating symlink for .$config"
   ln -s $file ~/.$config
 done
+
+echo "Adding zshrc for macports"
+ln -s `pwd`/zshrc/zshrc-macports ~/.zshrc
 
 echo "Adding aliases for bins"
 
