@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#check for XCode install
 xcodeapp="/Applications/Xcode.app"
 
 if [ -e "$xcodeapp" ]
@@ -25,8 +26,10 @@ sudo xcode-select --switch "/Library/Developer/CommandLineTools"
 echo "Installing latest homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Updating and installing some packages including fonts to use with iTerm2"
+echo "Updating brew's formulae"
 brew update
+
+echo "Installing some packages including fonts to use with iTerm2"
 brew install zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr
 brew cask install iterm2
 brew tap caskroom/fonts
@@ -56,10 +59,10 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
-echo "Adding zshrc for brew"
+echo "Creating symlink for .zshrc (the brew version)"
 ln -s `pwd`/zshrc/zshrc-brew ~/.zshrc
 
-echo "Adding aliases for bins, and creating ~/bin if it does not exist)"
+echo "Adding aliases for bins (and creating ~/bin if it does not exist)"
 
 mkdir -p ~/bin/
 bin_aliases=`pwd`/bins/*
@@ -69,7 +72,6 @@ for bins in $bin_aliases; do
   echo "Creating symlink for $bin"
   ln -s $bins ~/bin/$bin
 done
-
 
 #echo "Setup vim theme"
 #mkdir -p ~/.vim/colors
@@ -83,8 +85,9 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setting brew zsh as default shell, and adding it in /etc/shells (needs user password)"
+echo "Setting zsh from brew as default shell, and adding it to /etc/shells (needs sudo)"
 sudo tee -a /etc/shells <<< "/usr/local/bin/zsh"
-chsh -s /usr/local/bin/zsh
+sudo chpass -s '/usr/local/bin/zsh' $USER
 
-echo "Setup done"
+echo "Setup done, exiting. Open a new terminal to see changes."
+exit 0

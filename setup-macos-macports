@@ -5,13 +5,13 @@ xcodeapp="/Applications/Xcode.app"
 
 if [ -e "$xcodeapp" ]
   then
-    echo "XCode is already installed, continuing."
+    echo "XCode is already installed, continuing setup."
   else
-    echo "Xcode needs to be installed before installing macports. Exiting setup script."
+    echo "Xcode needs to be installed before installing macports, you can get it from the App Store. Exiting setup script."
     exit 0
 fi
 
-echo "Agree to Xcode license (needs sudo)"
+echo "Accept Xcode license if not already done (needs sudo)"
 sudo xcodebuild -license accept
 
 #echo "Installing Command Line Tools"
@@ -21,7 +21,7 @@ sudo xcodebuild -license accept
 #sudo xcode-select --switch "/Library/Developer/CommandLineTools"
 
 echo "Downloading and installing latest macports release (install needs sudo)"
-/usr/bin/curl -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg 
+/usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg 
 sudo /usr/sbin/installer -pkg /tmp/macports.pkg -target /
 
 echo "Updating macports definitions (needs sudo)"
@@ -29,13 +29,13 @@ sudo /opt/local/bin/port selfupdate
 sudo /opt/local/bin/port upgrade outdated
 
 echo "Installing some packages (with dependencies)"
-sudo /opt/local/bin/port -N install zsh mosh tmux mas mtr pwgen youtube-dl htop glances
+sudo /opt/local/bin/port -q -N install zsh mosh tmux mas mtr pwgen youtube-dl htop glances git hub
 
-sudo /opt/local/bin/port select --set python python27
-sudo /opt/local/bin/port select --set python2 python27
+echo "Selecting python27 as default python (needed after)"
+sudo /opt/local/bin/port -q select --set python python27
+sudo /opt/local/bin/port -q select --set python2 python27
 
 echo "Installing latest iTerm (needs sudo)"
-
 #curl down xml with http links
 /usr/bin/curl -s https://www.iterm2.com/appcasts/final.xml |/usr/bin/tail -8 |/usr/bin/grep http >> /tmp/tmp_url_iterm.txt
 # get the exact url from that xml
@@ -50,8 +50,8 @@ sudo /usr/bin/unzip -qo -d /Applications /tmp/iTerm.zip
 /bin/rm -Rf /tmp/dl_url_iterm.txt
 
 echo "Installing Source Code Pro font"
-/usr/bin/curl -o /tmp/source-code-pro.zip https://www.fontsquirrel.com/fonts/download/source-code-pro
-/usr/bin/unzip /tmp/source-code-pro.zip -d ~/Library/Fonts/
+/usr/bin/curl -s -o /tmp/source-code-pro.zip https://www.fontsquirrel.com/fonts/download/source-code-pro
+/usr/bin/unzip -qq /tmp/source-code-pro.zip -d ~/Library/Fonts/
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -77,10 +77,10 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
-echo "Adding zshrc for macports"
+echo "Creating symlink for .zshrc (the macports version)"
 ln -s `pwd`/zshrc/zshrc-macports ~/.zshrc
 
-echo "Adding aliases for bins"
+echo "Adding aliases for bins (and creating ~/bin is it does not exist)"
 
 mkdir -p ~/bin/
 bin_aliases=`pwd`/bins/*
@@ -103,8 +103,9 @@ echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-echo "Setting brew zsh as default shell (needs sudo)"
+echo "Setting zsh from macports as default shell and adding it to /etc/shells (needs sudo)"
 sudo sh -c 'echo /opt/local/bin/zsh >>/etc/shells'
 sudo chpass -s '/opt/local/bin/zsh' $USER
 
-echo "Setup done"
+echo "Setup done, exiting. Open a new terminal to see changes."
+exit 0
