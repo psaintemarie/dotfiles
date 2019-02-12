@@ -4,7 +4,7 @@ echo "Updating apt"
 sudo apt update
 
 echo "Installing some apps"
-sudo apt install git zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances -y
+sudo apt install git zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances tldr -y
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -20,7 +20,7 @@ ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-z
 
 echo "Setup configuration files"
 
-rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore  ~/.vimrc ~/.spaceship_options ~/.tmux.conf
+rm ~/.zshrc ~/.aliases  ~/.gitconfig  ~/.gitignore ~/.spaceship_options ~/.tmux.conf
 
 config_files=`pwd`/config/*
 
@@ -30,10 +30,20 @@ for file in $config_files; do
   ln -s $file ~/.$config
 done
 
-echo "Setup vim theme"
+echo "Creating symlink for .zshrc (the linux version)"
+ln -s `pwd`/zshrc/zshrc-linux ~/.zshrc
 
-mkdir -p ~/.vim/colors
-vim_theme=`pwd`/themes
-ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
+#echo "Setup vim theme"
+#mkdir -p ~/.vim/colors
+#vim_theme=`pwd`/themes
+#ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
 
-echo "Setup done."
+echo "Installing SpaceVim"
+curl -sLf https://spacevim.org/install.sh | bash
+
+echo "Setting zsh from brew as default shell, and adding it to /etc/shells (needs sudo)"
+sudo tee -a /etc/shells <<< "/bin/zsh"
+sudo usermod -s /bin/zsh $USER
+
+echo "Setup done, exiting. Open a new terminal to see changes."
+exit 0
