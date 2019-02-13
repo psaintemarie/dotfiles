@@ -2,23 +2,43 @@
 
 ## This will install
 
-On macOS:
+On macOS, you have 2 options:
 
-- brew 
-- *mosh tmux known_hosts mas mtr pwgen youtube-dl subnetcalc htop glances* via brew
+Installing with homebrew:
+
+- when you first invoque `git`, macOS will prompt you to install the Command Line Tools
+- install brew
+- install *zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr git hub* via brew
 - *iterm2* and *font-source-code-pro* via brew cask
 - Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
 - link all configuration files
-- add dracula theme to vim
+- link all bin files in `$HOME/bin`
+- install [SpaceVim](https://github.com/SpaceVim/SpaceVim)
 - set custom iterm2 preference folder and set preference
+- change shell for $USER
+
+Installing with macports:
+
+- check if you have XCode installed (required)
+- once Xcode install, restart the script, it will accept Xcode license
+- install macports (for 10.14)
+- install *zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances git hub* via macports
+- install latest *iterm2* and *font-source-code-pro* manually
+- Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
+- link all configuration files
+- link all bin files in `$HOME/bin`
+- install [SpaceVim](https://github.com/SpaceVim/SpaceVim)
+- set custom iterm2 preference folder and set preference
+- change shell for $USER
 
 On Linux (ubuntu/debian):
 
-- you will need to install *git* manually first
-- *zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances* via apt
+- you will need to install *git* manually first (if it's not there already)
+- install *zsh vim mosh tmux mtr pwgen youtube-dl subnetcalc htop glances tldr curl* via apt
 - Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme
 - link all configuration files
-- add dracula theme to vim
+- install [SpaceVim](https://github.com/SpaceVim/SpaceVim)
+- change shell for $USER
 
 If you want to use these, clone the repository:
 
@@ -31,12 +51,12 @@ You'll need to use the right setup file, for macOS or Linux
 
 ```bash
 cd ~/your_main_git_folder/dotfiles
-sh setup-macos
+sh setup-macos-brew
+or
+sh setup-macos-macports
 or
 sh setup-linux
 ```
-
-After running the script, change your default shell by running `chsh -s /bin/zsh`.
 
 On macOS, you can install the Dracula theme for Terminal.app
 

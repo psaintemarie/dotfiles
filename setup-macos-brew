@@ -30,7 +30,7 @@ echo "Updating brew's formulae"
 brew update
 
 echo "Installing some packages including fonts to use with iTerm2"
-brew install zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr
+brew install zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr git hub
 brew cask install iterm2
 brew tap caskroom/fonts
 brew cask install font-source-code-pro
