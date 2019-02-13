@@ -1,6 +1,8 @@
 <h4 align="center">This is a compilation of config files for zsh, vim, git, tmux and more.</h4>
 
-## This will install
+<h4 align="center">
+  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot1.png" alt="dotfiles1" width="850">
+</h4>
 
 On macOS, you have 2 options:
 
@@ -67,12 +69,9 @@ On macOS, you can install the Dracula theme for Terminal.app
 5. Click *Default*
 
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot1.png" alt="dotfiles1" width="850">
-  <br/>
   <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot2.png" alt="dotfiles2" width="850">
   <br/>
   <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot3.png" alt="dotfiles3" width="850">
   <br/>
   <img src="https://raw.githubusercontent.com/psaintemarie/dotfiles/master/screenshots/screenshot4.png" alt="dotfiles4" width="850">
 </h1>
-x
