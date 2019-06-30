@@ -28,7 +28,7 @@ if [[ "$osx_vers" -eq 13 ]]; then
       #Download macOS 10.13 MacPorts package
       /usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.13-HighSierra.pkg
       #Install MacPorts for macOS 10.13
-      sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
+      sudo /usr/sbin/installer -pkg /tmp/macports.pkg -target /
       #Delete tmp file
       /bin/rm /tmp/macports.pkg
 fi
@@ -37,12 +37,10 @@ if [[ "$osx_vers" -eq 14 ]]; then
       #Download macOS 10.13 MacPorts package
       /usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg
       #Install MacPorts for macOS 10.14
-      sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
+      sudo /usr/sbin/installer -pkg /tmp/macports.pkg -target /
       #Delete tmp file
       /bin/rm /tmp/macports.pkg
 fi
-
-exit 0
 
 echo "Updating macports definitions (needs sudo)"
 sudo /opt/local/bin/port selfupdate
