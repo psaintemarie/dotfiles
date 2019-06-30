@@ -26,22 +26,20 @@ osx_vers=$(sw_vers -productVersion | awk -F "." '{print $2}')
 
 if [[ "$osx_vers" -eq 13 ]]; then
       #Download macOS 10.13 MacPorts package
-      echo "10.13"
-      #/usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.13-HighSierra.pkg
+      /usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.13-HighSierra.pkg
       #Install MacPorts for macOS 10.13
-      #sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
+      sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
       #Delete tmp file
-      #/bin/rm /tmp/macports.pkg
+      /bin/rm /tmp/macports.pkg
 fi
 
 if [[ "$osx_vers" -eq 14 ]]; then                                                                                                                                                            
       #Download macOS 10.13 MacPorts package
-      echo "10.14"
-      #/usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg
+      /usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.14-Mojave.pkg
       #Install MacPorts for macOS 10.14
-      #sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
+      sudo /usr/sbin/<installer -pkg /tmp/macports.pkg -target /
       #Delete tmp file
-      #/bin/rm /tmp/macports.pkg
+      /bin/rm /tmp/macports.pkg
 fi
 
 exit 0
