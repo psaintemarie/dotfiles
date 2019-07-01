@@ -23,7 +23,7 @@ Installing with macports:
 
 - check if you have XCode installed (required)
 - once Xcode install, restart the script, it will accept Xcode license
-- install macports (for 10.14)
+- install macports (for 10.13 or 10.14, 10.12 and lower not compatible)
 - install *zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances git hub* via macports
 - install latest *iterm2* and *font-source-code-pro* manually
 - Oh my ZSH, *zsh-syntax-highlighting, zsh-autosuggestions* plugins and *spaceship-prompt* theme

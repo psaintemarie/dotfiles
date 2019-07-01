@@ -24,6 +24,11 @@ echo "Downloading and installing latest macports release based on OS running (in
 
 osx_vers=$(sw_vers -productVersion | awk -F "." '{print $2}')
 
+if [[ "$osx_vers" -le 12 ]]; then
+      echo "This script won't work for macOS 10.12 and below"
+      exit 0
+fi
+
 if [[ "$osx_vers" -eq 13 ]]; then
       #Download macOS 10.13 MacPorts package
       /usr/bin/curl -s -o /tmp/macports.pkg https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.13-HighSierra.pkg
