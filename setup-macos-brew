@@ -73,13 +73,13 @@ for bins in $bin_aliases; do
   ln -s $bins ~/bin/$bin
 done
 
-#echo "Setup vim theme"
-#mkdir -p ~/.vim/colors
-#vim_theme=`pwd`/themes
-#ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
+echo "Setup vim theme"
+mkdir -p ~/.vim/colors
+vim_theme=`pwd`/themes
+ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
 
-echo "Installing SpaceVim"
-curl -sLf https://spacevim.org/install.sh | bash
+#echo "Installing SpaceVim"
+#curl -sLf https://spacevim.org/install.sh | bash
 
 echo "Setting iTerm2 preferences folder..."
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "`pwd`/iterm"

@@ -33,13 +33,13 @@ done
 echo "Creating symlink for .zshrc (the linux version)"
 ln -s `pwd`/zshrc/zshrc-linux ~/.zshrc
 
-#echo "Setup vim theme"
-#mkdir -p ~/.vim/colors
-#vim_theme=`pwd`/themes
-#ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
+echo "Setup vim theme"
+mkdir -p ~/.vim/colors
+vim_theme=`pwd`/themes
+ln -s $vim_theme/dracula.vim ~/.vim/colors/dracula.vim
 
-echo "Installing SpaceVim"
-curl -sLf https://spacevim.org/install.sh | bash
+#echo "Installing SpaceVim"
+#curl -sLf https://spacevim.org/install.sh | bash
 
 echo "Setting zsh from brew as default shell, and adding it to /etc/shells (needs sudo)"
 sudo tee -a /etc/shells <<< "/bin/zsh"
