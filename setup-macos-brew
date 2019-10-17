@@ -29,11 +29,33 @@ echo "Installing latest homebrew"
 echo "Updating brew's formulae"
 brew update
 
-echo "Installing some packages including fonts to use with iTerm2"
+echo "Installing some packages"
 brew install zsh mosh tmux mas mtr pwgen youtube-dl subnetcalc htop glances tldr git hub
-brew cask install iterm2
-brew tap caskroom/fonts
-brew cask install font-source-code-pro
+#brew cask install iterm2
+#brew tap caskroom/fonts
+#brew cask install font-source-code-pro
+
+echo "Installing latest iTerm (needs sudo)"
+#curl down xml with http links
+/usr/bin/curl -s https://www.iterm2.com/appcasts/final.xml |/usr/bin/tail -8 |/usr/bin/grep http >> /tmp/tmp_url_iterm.txt
+# get the exact url from that xml
+/usr/bin/awk -F'[""]' '{print $2}' /tmp/tmp_url_iterm.txt >> /tmp/dl_url_iterm.txt
+# curl down the zip file
+/usr/bin/xargs -n 1 /usr/bin/curl -o /tmp/iTerm.zip < /tmp/dl_url_iterm.txt
+# unzip the file into /Applications
+sudo /usr/bin/unzip -qo -d /Applications /tmp/iTerm.zip
+#clean up
+/bin/rm -rf /tmp/iTerm.zip
+/bin/rm -rf /tmp/tmp_url_iterm.txt
+/bin/rm -Rf /tmp/dl_url_iterm.txt
+
+echo "Installing Powerline patched fonts"
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts
+# install
+/tmp/fonts/install.sh
+# clean-up a bit
+rm -rf /tmp/fonts
 
 echo "Installing Oh my ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
